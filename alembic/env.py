@@ -5,6 +5,9 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from sqlmodel import SQLModel
 from alembic import context
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -16,11 +19,13 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
     
 database_url = os.getenv('SQL_ALCHEMY_URL')
+if not database_url:
+    raise ValueError("SQL_ALCHEMY_URL no está configurada en las variables de entorno")
 config.set_main_option("sqlalchemy.url", database_url)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-# from myapp import mymodel
+from src.users import models
 # target_metadata = mymodel.Base.metadata
 target_metadata = SQLModel.metadata
 
