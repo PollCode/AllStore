@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from uuid import UUID
 from datetime import datetime
 from common.filters import BaseFilter
@@ -28,12 +28,11 @@ class CompanyFilterSchema(BaseFilter):
 
 class CreateCompanySchema(BaseModel):
     name: str
-    email: str
+    email: EmailStr
     description: str | None 
-    is_active: bool
     
 class UpdateCompanySchema(BaseModel):
     name: str | None = None
-    email: str | None = None
+    email: EmailStr | None = None
     description: str | None = None
     is_active: bool | None = None
