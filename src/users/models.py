@@ -2,8 +2,8 @@ import sqlmodel as sm
 import sqlalchemy as sa
 from uuid import uuid4, UUID
 from typing import List, Optional
+from common.models.api_base_model import ApiBaseModel
 from .enums import UserRole, Permission 
-from ..common.models.api_base_model import ApiBaseModel
 
 class Company(ApiBaseModel, table=True):
     __tablename__ = "companies"

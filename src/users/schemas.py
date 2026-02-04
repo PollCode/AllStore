@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from uuid import UUID
 from datetime import datetime
+from common.filters import BaseFilter
 
 # Company Schemas
 class CompanyResponse(BaseModel):
@@ -15,7 +16,7 @@ class CompanyResponse(BaseModel):
     class Config:
         from_attributes = True
        
-class CompanyFilterSchema(BaseModel):
+class CompanyFilterSchema(BaseFilter):
     name: str | None = None
     email: str | None = None
     description: str | None = None

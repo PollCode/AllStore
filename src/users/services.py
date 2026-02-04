@@ -3,12 +3,13 @@ from datetime import datetime
 from typing import Optional
 from uuid import UUID
 from sqlalchemy.exc import DataError, IntegrityError, NoResultFound
+from common.pagination import PaginationParams
+from common.services import BaseService
 from .models import Company, User
 from .schemas import *
-from ..common.pagination import PaginationParams
 
 
-class CompanyService:
+class CompanyService(BaseService):
     
     def __init__(self, db: sm.Session):
         self.db = db
